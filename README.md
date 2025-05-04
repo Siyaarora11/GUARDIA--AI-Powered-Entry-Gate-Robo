@@ -8,19 +8,17 @@ https://www.linkedin.com/in/siya-arora-411891234/</h3>
 
 <h1>Features</h1>
 <ul>
-  <li>
- User Detection and Recognition
- Facial Movement Detection
- Audio Input and Processing
- Mode Switching between Security and Assistant Modes
- Multi-threading for Performance Optimization
-  </li>
+ <li>User Detection and Recognition</li>
+ <li>Facial Movement Detection</li>
+ <li>Audio Input and Processing</li>
+ <li>Mode Switching between Security and Assistant Modes</li>
+ <li>Multi-threading for Performance Optimization</li>
 </ul>
 <h1>Setup Instructions</h1>
 <h3>[Instructions as provided above]</h3>
 <h1>Usage</h1>
 <h3>
-Security Mode: Monitors for registered users and detects unrecognized individuals.
+Security Mode: Monitors for registered users and detects unrecognized individuals.<br>
 Assistant Mode: Responds to voice commands and provides assistance.
 </h3>
 <h1>Contributing</h1>
