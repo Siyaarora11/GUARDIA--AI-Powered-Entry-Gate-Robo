@@ -3,7 +3,8 @@
 
 
 <h1>📢 Explore More on LinkedIn!</h1>
-<h3>Check out our detailed project insights, media, and updates on LinkedIn project section . Click the link below to learn more about Guardia and see it in action!</h3>
+<h3>Check out our detailed project insights, media, and updates on LinkedIn project section . Click the link below to learn more about Guardia and see it in action!
+https://www.linkedin.com/in/siya-arora-411891234/</h3>
 
 <h1>Features</h1>
 <ul>
@@ -16,7 +17,7 @@
   </li>
 </ul>
 <h1>Setup Instructions</h1>
-[Instructions as provided above]
+<h3>[Instructions as provided above]</h3>
 <h1>Usage</h1>
 <h3>
 Security Mode: Monitors for registered users and detects unrecognized individuals.
