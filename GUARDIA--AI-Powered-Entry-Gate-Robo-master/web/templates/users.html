@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardia - Registered Users</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #2a4858);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 20px;
+            padding: 1rem 0;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 0 0 15px 15px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .nav-right {
+            margin-right: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 0.8s forwards;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #4db6ac;
+            margin-bottom: 0.5rem;
+        }
+
+        .controls-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeIn 0.8s 0.2s forwards;
+        }
+
+        .search-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-group label {
+            margin-bottom: 0.5rem;
+            color: #4db6ac;
+        }
+
+        .search-group input {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .search-group input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .table-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            opacity: 0;
+            animation: fadeIn 0.8s 0.4s forwards;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: rgba(77, 182, 172, 0.2);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #4db6ac;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        tr {
+            transition: background 0.3s ease;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn {
+            color: #4db6ac;
+            text-decoration: none;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            background: rgba(77, 182, 172, 0.2);
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .btn:hover {
+            background: rgba(77, 182, 172, 0.4);
+        }
+
+        .action-btn {
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn {
+            background: rgba(77, 182, 172, 0.2);
+        }
+
+        .view-btn:hover {
+            background: rgba(77, 182, 172, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .controls-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-left">
+            <h3>Guardia</h3>
+            <a href="/entries" class="btn">Entries</a>
+        </div>
+        <div class="nav-right">
+            <a href="/logout" class="btn">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Registered Users</h1>
+            <p>View and manage all registered users in the system</p>
+        </div>
+
+        <div class="controls-container">
+            <div class="search-group">
+                <label>Search by Name</label>
+                <input type="text" placeholder="Enter name..." id="nameSearch">
+            </div>
+            <div class="search-group">
+                <label>Search by Mobile</label>
+                <input type="text" placeholder="Enter mobile number..." id="mobileSearch">
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Access ID</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTableBody">
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.mobile }}</td>
+                        <td>{{ user.id }}</td>
+                        <td>
+                            <a href="/user_entries/{{ user.id }}" class="action-btn view-btn">View Entries</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function filterUsers() {
+            const nameSearch = document.getElementById('nameSearch').value.toLowerCase();
+            const mobileSearch = document.getElementById('mobileSearch').value.toLowerCase();
+            const usersTableBody = document.getElementById('usersTableBody');
+            const rows = usersTableBody.getElementsByTagName('tr');
+
+            for (let row of rows) {
+                const name = row.cells[0].textContent.toLowerCase();
+                const mobile = row.cells[1].textContent.toLowerCase();
+                const matchesName = name.includes(nameSearch);
+                const matchesMobile = mobile.includes(mobileSearch);
+                row.style.display = matchesName && matchesMobile ? '' : 'none';
+            }
+        }
+
+        document.getElementById('nameSearch').addEventListener('input', filterUsers);
+        document.getElementById('mobileSearch').addEventListener('input', filterUsers);
+    </script>
+</body>
+</html>
